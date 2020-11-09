@@ -69,6 +69,14 @@ self.addEventListener("fetch", function (evt) {
     return;
   }
 
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("serviceWorker.js").then((reg) => {
+        console.log("We found your service worker file!", reg);
+      });
+    });
+  }
+
   // if the request is not for the API, serve static assets using "offline-first" approach.
 
   evt.respondWith(
