@@ -1,12 +1,13 @@
 const FILES_TO_CACHE = [
   "/",
-  "/index.html",
-  "/styles.css",
-  "/index.js",
-  "/db.js",
-  "/manifest.json",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png",
+  "index.html",
+  "assets/css/styles.css",
+  "assets/js/index.js",
+  "assets/js/db.js",
+  "assets/icons/icon-192x192.png",
+  "assets/icons/icon-512x512.png",
+  "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+  "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
 ];
 
 const CACHE_NAME = "static-cache-v2";
@@ -67,14 +68,6 @@ self.addEventListener("fetch", function (evt) {
     );
 
     return;
-  }
-
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("serviceWorker.js").then((reg) => {
-        console.log("We found your service worker file!", reg);
-      });
-    });
   }
 
   // if the request is not for the API, serve static assets using "offline-first" approach.
